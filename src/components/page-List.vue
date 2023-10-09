@@ -5,7 +5,7 @@
         <span @click="hideButton" class="material-symbols-outlined">double_arrow</span>
       </div>
       <div class="current">
-        <button>※ 指定中</button>
+        <button @click="close">※ 指定中</button>
       </div>
       <div class="searchBtn">
         <span class="material-symbols-outlined">
@@ -32,7 +32,7 @@ search
       </div>
       <div class="patient-note">
         <p>患者メモ</p>
-        <button>保存</button>
+        <button @click="close">保存</button>
       </div>
       <div class="notes">
         <p>特徴：少し話が長め、接し方注意</p>
@@ -44,34 +44,51 @@ search
         <p>過去予約 (123件)</p>
       </div>
       <div class="input">
-        <div class="info">
+        <div class="info firstIcon">
           <p>2023/11/23 (金) 11:00 </p>
-          <router-link to="page-list">糖尿病代謝内科 門前 一郎</router-link>
-          <p>採尿</p>
+          <div class="link">
+            <router-link to="page-list">糖尿病代謝内科 </router-link>
+            <router-link to="page-list">門前 一郎</router-link>
+          </div>
+          <p class="text">採尿</p>
+          <span class="material-symbols-outlined infoIcon">info</span>
         </div>
 
-        <div class="info">
-          <p>2023/11/23 (金) 11:00 </p>
-          <router-link to="page-list">糖尿病代謝内科 門前 一郎</router-link>
-          <p>採尿</p>
+        <div class="info detail">
+          <p>2023/11/23 (金) 10:00 </p>
+          <router-link to="page-list">腹部エコー</router-link>
+          <p class="text">空腹来院伝え済み</p>
+          <button class="btn">詳細</button>
         </div>
 
-        <div class="info">
-          <p>2023/11/23 (金) 11:00 </p>
-          <router-link to="page-list">糖尿病代謝内科 門前 一郎</router-link>
-          <p>採尿</p>
+        <div class="info fullExpand" >
+          <p>2023/11/23 (金) 09:00 </p>
+          <div class="link">
+            <router-link to="page-list">消化器内科</router-link>
+            <router-link to="page-list">木村一郎</router-link>
+          </div>
+          <p class="text">採尿</p>
+          <span class="material-symbols-outlined zoom">pan_zoom</span>
         </div>
 
-        <div class="info">
-          <p>2023/11/23 (金) 11:00 </p>
-          <router-link to="page-list">糖尿病代謝内科 門前 一郎</router-link>
-          <p>採尿</p>
+        <div class="info newBtn">
+          <p> 2023/10/27 (木) 11:00 </p>
+          <div class="link">
+            <router-link to="page-list">消化器内科 </router-link>
+              <router-link to="page-list">木村 一郎</router-link>
+          </div>
+          <p class="text">2023/11/23 (金) 09:00 結果説明</p>
+          <button class="new">詳細</button>
         </div>
 
-        <div class="info">
-          <p>2023/11/23 (金) 11:00 </p>
-          <router-link to="page-list">糖尿病代謝内科 門前 一郎</router-link>
-          <p>採尿</p>
+        <div class="info sales">
+          <p>2023/10/02 (木) 11:00  </p>
+          <div class="link">
+            <router-link to="page-list">皮膚科 </router-link>
+              <router-link to="page-list">松下 俊</router-link>
+          </div>
+          <p class="text">半年ぶりの接種</p>
+            <button class="basic">狂犬病</button>
         </div>
       </div>
     </div>
@@ -82,12 +99,15 @@ search
 export default {
   data(){
     return{
-      showContent:false
+      showContent:false,
     };
   },
   methods:{
     hideButton(){
       this.showContent=!this.showContent
+    },
+    close(){
+     this. showContent=false
     }
   }
 }
@@ -111,7 +131,7 @@ export default {
 }
 .double_arrow{
   background-color: #d9d9d9;
-  width: 7%;
+  width: 5%;
   border-radius: 5px;
   height: 33px;
   display: flex;
@@ -131,7 +151,7 @@ export default {
   background-color: white;
   border: 2px solid#343463;
   height: 44px;
-  width: 55%;
+  width: 31%;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -143,7 +163,7 @@ export default {
   background-color: white;
   border: none;
   height: 44px;
-  width: 35%;
+  width: 61%;
   border-radius: 10px;
 
 }
@@ -204,10 +224,82 @@ export default {
   border-radius: 8px;
   background-color: #ffffff;
   box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.5);
+  font-size: 1rem;
 }
 .input{
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.firstIcon{
+  position: relative;
+}
+.infoIcon{
+  position: absolute;
+  right: 2px;
+  top:2px;
+  font-size: 46px;
+}
+.detail{
+  position: relative;
+}
+.btn{
+  position: absolute;
+  right: 12px;
+  top: 16px;
+  font-size: 17px;
+  height: 34px;
+  border-radius: 7px;
+  background-color: #4da9f6;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+.fullExpand{
+  position: relative;
+}
+.zoom{
+  position: absolute;
+  right: 2px;
+  top:2px;
+  font-size: 46px;
+}
+.link{
+  display: flex;
+  gap: 15px;
+}
+.newBtn{
+  position: relative;
+}
+.new{
+  position: absolute;
+  right: 12px;
+  top: 16px;
+  font-size: 17px;
+  height: 34px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  border:1px solid #4da9f6;
+  color: #4da9f6;
+}
+.sales{
+  position: relative;
+}
+.basic{
+  position: absolute;
+  top:63px;
+  left: 149px;
+  width: 12%;
+  font-size: 14px;
+  background-color: #97ceff;
+  border: 2px solid #5151ff;
+  height: 38px;
+  border-radius: 5px;
+}
+.text {
+  color: grey;
+}
+.list p{
+  color: grey;
 }
 </style>
