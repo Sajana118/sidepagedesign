@@ -281,6 +281,7 @@ export default {
   background-color: #ffffff;
   border:1px solid #4da9f6;
   color: #4da9f6;
+  cursor: pointer;
 }
 .sales{
   position: relative;
@@ -295,6 +296,7 @@ export default {
   border: 2px solid #5151ff;
   height: 38px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .text {
   color: grey;
